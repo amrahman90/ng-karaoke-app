@@ -1,0 +1,33 @@
+<div class="app">
+  <div class="p1">
+    <div class="app-nav">
+      <img src="assets/images/karaoke-title.png" alt="Karaoke" class="app-nav-img" />
+    </div>
+
+    <mat-toolbar style="height: 100px; color: #5AA8CD" *ngIf="!currentSong">
+      <mat-form-field style="width: 95%">
+          <input type="search" (input)="searchChanged($event)" matInput placeholder="Search a song..." [(ngModel)]="searchText" />
+          <button mat-button (click)="searchSong()">
+            <mat-icon>search</mat-icon>
+          </button>
+      </mat-form-field>
+    </mat-toolbar>
+
+    <div class="app-body">
+      <div class="app-body-content" *ngIf="currentSong">
+        <Player [currentSong]="currentSong"></Player>
+      </div>
+
+      <div class="app-body-songlist p1" *ngIf="!currentSong" layout="row" layout-wrap>
+        <song-selection
+          [songList]="songList"
+          [currentSong]="currentSong"
+          (onChooseSong)="handleChooseSong($event)"></song-selection>
+      </div>
+    </div>
+
+    <button class="app-backbutton" *ngIf="currentSong" (click)="handleClearCurrentSong()">
+      ← Back to list of songs
+    </button>
+  </div>
+</div>

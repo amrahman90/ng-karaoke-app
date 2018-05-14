@@ -1,0 +1,13 @@
+<mat-card class="songlist-item" *ngFor="let song of songList" [class.songlist-item--selected]="currentSong === song">
+    <a href="" (click)="handleChooseSong($event, song)" class="songlist-item-anchor">
+      <span class="{{'songlist-item-avatar'+song.id}}"></span>
+      <span class="songlist-item-details">
+        <span class="songlist-item-details-title">{{ song.title }}</span>
+        <span class="songlist-item-details-artist">{{ song.artist }}</span>
+      </span>
+    </a>
+    <mat-card-actions style="margin-left: 5px; padding-bottom: 15px">
+      <button (click)="liked(song.id)" [ngClass]="{'liked': song.liked === true}" mat-button><mat-icon style="margin-right: 5px;">thumb_up</mat-icon>{{song.likes}}</button>
+      <button (click)="openDialog(song.id)" mat-button style="margin-left: 15px;"><mat-icon style="margin-right: 5px;">share</mat-icon>SHARE</button>
+    </mat-card-actions>
+  </mat-card>

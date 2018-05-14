@@ -1,0 +1,10 @@
+<h1 mat-dialog-title>Share the song</h1>
+<div mat-dialog-content>
+  <p>Here is a link to share this song:</p>
+  <mat-form-field>
+    <input matInput [(ngModel)]="shareUrl" readonly>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button style="background-color: #5AA8CD; color: white" mat-button (click)="onNoClick()">Ok</button>
+</div>
